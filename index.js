@@ -39,6 +39,30 @@ app.get('/six',(req,res)=>{
     res.end('Cookie set success')
 })
 
+app.get('/seven',(req,res)=>{
+    res.clearCookie('name')
+    res.end('Cookie clear success')
+})
+
+app.get('/eight',(req,res)=>{
+   let firstname = req.query.firstname
+   let lastname = req.query.lastname
+    res.end(firstname+" "+lastname)
+})
+
+app.get('/nine',(req,res)=>{
+    let firstname = req.header('firstname')
+    let lastname = req.header('lastname')
+     res.end(firstname+" "+lastname)
+ })
+
+ app.post('/ten',(req,res)=>{
+    let firstname = req.query.firstname
+    let lastname = req.query.lastname
+     res.end(firstname+" "+lastname)
+ })
+
+
 app.post('/two',(req,res)=>{
     res.status(401).end('unathor...')
 })
@@ -68,6 +92,6 @@ app.get('/three',(req,res)=>{
 
 
 
-app.listen(8000,()=>{
+app.listen(8080,()=>{
     console.log('Server run success');
 })
