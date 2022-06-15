@@ -1,11 +1,37 @@
 const express = require('express')
+// const bodyparser = require('body-parser')
+const multer =require('multer')
 
-app = express()
+
+let app = express()
+const multer=multer()
+// app.use(bodyparser.json())
+app.use(multer.array())
+app.use(express.static('public'))
+
 
 app.get('/',(req,res)=>{
     res.send('I am success')
 })
 
+app.post('/Thirteen',(req,res)=>{
+    let JSONData = req.body
+    res.send(JSON.stringify(JSONData))
+})
+
+// app.post('/eleven',(req,res)=>{
+//     let JSONData =req.body
+//     let JSONString = JSON.stringify(JSONData)
+//     res.send(JSONString)
+// })
+
+// app.post('/twelve',(req,res)=>{
+//     let JSONData =req.body
+//     let name = JSONData
+//     ['name']
+//     let city = JSONData['city']
+//     res.send(name + " " +city)
+// })
 
 app.post('/about',(req,res)=>{
     res.send('I am About route')
@@ -92,6 +118,6 @@ app.get('/three',(req,res)=>{
 
 
 
-app.listen(8080,()=>{
+app.listen(8040,()=>{
     console.log('Server run success');
 })
